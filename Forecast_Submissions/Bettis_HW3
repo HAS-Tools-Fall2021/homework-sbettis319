@@ -1,0 +1,29 @@
+Sierra Bettis
+HAS Tools
+September 13, 2021
+Assignment 3
+
+1. Flow, year, month, and day are all lists. Flow and year provide numerical 
+data that is given by the data in the streamflow.txt file. Month and day
+variables are numerical values associated with every month and days within
+each month. Each list has a size of 11939. 
+
+2. In the month of September, there were 591 days that predicted a 
+discharge of over 100. This means that only 5% of the overall data
+had a dicharge of greater than 100 cfs. 
+
+3. There were 292 more times that the flow was greater or equal
+than 100 before the year 2000 in September, which means that 2.4% of
+the overall data. There were 179 more times that the flow was greater
+or equal than 100 before the year 2010 in September, which means that 
+1.5% of the overall data. 
+
+4. In the first half of Sepetember in 2020, the flow is generally
+smaller and then in the second half of September, the flow increases. 
+
+#######
+
+For this weeks assignment, I chose flow values of 100 cfs because there
+should not be much rain, but the river should still be flowing in certain
+areas. For the second week, I chose a value of 120 cfs going off of the
+data collected from the second week of September data. 
