@@ -2,6 +2,15 @@ Sierra Bettis
 HAS Tools - 401
 Sepetmber 19, 2021
 
+_________
+## Grade: 
+3/3: Good work! I didn't take off points but here are some comments for things to work on and check out in the solution. 
+- For question 1 remember all of the data have to be the same thing in a numpy array. So now they are all floats. 
+- For questions 3&4 I noted in class last week you shoul divide by the total number of september days not the total number of days. This is why your percentages are so low. You can check the solution for examples of how to do this. 
+- Question 5: your answers on this one are skewed a little high because you are only taking the average of the flow greater than 140cfs based on your conditional statement. 
+- I still don't see any markdown formatting. If you have questions about how to insert that let me know but please make sure to try out some of that next time.  Also note that you need to save your files as .md files for them to be markdown files. I added the extension to this one but you should add in the future. 
+_________
+
 1. Provide a summary of the forecast values you picked and why. 
 Include discussion of the quantitative analysis that lead to your
 prediction. This can include any analysis you complete but must 
