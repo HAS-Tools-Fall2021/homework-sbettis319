@@ -2,6 +2,12 @@ Sierra Bettis
 HAS Tools_401
 September 27, 2021
 Homework 5
+_____
+## Grade
+3/3: Nice job. 
+- Question 5 was a tricky one. You actually needed to write a for loop for that. Check out my solution and let me knwo if you have questions. 
+- Also note you need to include the '.md' extension on your submisison file for formatting to work. I added it in here for you. 
+- Make sure you preview your markdown next time. The formatting was hard to follow because your tabels didn't come through. 
 
 1. Provide a summary of the data frames properties.
 What are the column names?
