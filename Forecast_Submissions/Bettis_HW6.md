@@ -30,33 +30,32 @@ week and how they were informed by your plotting
 ####
 Plot 1 is a line graph that shows the overall observed flow from 1989 to 2020. This is a good base graph as it shows flow over 30 years. 
 
-![picture 4](../../images/0fc869d87377c6e548bee90f218350335f271abb0e30defaec2e2e5dc54ae7b1.png)  
+![picture 10](../../images/bee6d264bf2eee41d692141966957a0f568cdb9094ee5b06685e3bd31e06e310.png)  
 
 
 Plot 2 is a histogram that just breaks down the flow of Sepetmber and October. The histogram shows how many times the log flow was reported in the month. September seems to have higher flow rates than October, which will be helpful to know for my forecasting. 
 
-
-![picture 3](../../images/0d54cf9195245e5b895fe0fd7ae53051d300097283fca4f5a5b4b565ca15176f.png)  
-
+![picture 11](../../images/0d54cf9195245e5b895fe0fd7ae53051d300097283fca4f5a5b4b565ca15176f.png)  
+ 
 
 Plot 3 is a histogram that shows the flow for September, October, November, and December. This is helpful for forecasting to see flow in each month going forward. 
 
-![picture 5](../../images/f034c0757f0c14bcbcd87054b62a7cdff42df2b801ae0ae98c7afd7eb491e3a3.png)  
+![picture 12](../../images/f034c0757f0c14bcbcd87054b62a7cdff42df2b801ae0ae98c7afd7eb491e3a3.png)  
 
 
 Plot 4 is a scatter plot that shows the flow for 2019 and 2020 in October. This plot shows the variabilty in flow for the past 2 years, although 2020 was the second driest year on record. 
 
-![picture 6](../../images/232d16757d20a867cef6aaba0ca7a6c421498a27cd7b8b94a4def8116b4529d4.png)  
+![picture 13](../../images/232d16757d20a867cef6aaba0ca7a6c421498a27cd7b8b94a4def8116b4529d4.png)  
 
 
 Plot 5 is another line graph that shows the weekly average observed flow from 2015-2020 for the first two weeks of October. If I made the coding correctly, I believe that this shows that the first week typically has more rain than the second week, which is very helpful in determining the 1 week and 2 week forecast. 
 
-![picture 8](../../images/e25434e47a18435a7b5785a249f5d415b0b2f57f1e3f567ab64b62d680034bef.png)  
+![picture 14](../../images/e25434e47a18435a7b5785a249f5d415b0b2f57f1e3f567ab64b62d680034bef.png)  
 
 
 Plot 6 is a box plot of the flows by each month. Analyzing this for October, the median is around 110 cfs with the minimum being around 70 cfs and the max being around 1010 cfs. 
 
-![picture 7](../../images/3cdb1add21a810176c8f876367126ebd3fcf9133f78bb46bcf59d234eec25022.png)  
+![picture 15](../../images/fea98bc37484dba176762f2f0460fc1fafc932a2d2b9f948bd08a5e1efb52599.png)  
 
 
 ###
