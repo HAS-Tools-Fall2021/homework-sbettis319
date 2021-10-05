@@ -3,6 +3,13 @@ HAS Tools
 October 4, 2021
 Homework 6
 
+__
+## Grade: 
+1/3: Good start however none of your plots came through. Also you don't have any formatting in your markdown so it is hard to read. Make sure you always preview your markdown before submitting. 
+I'm guessing the problem with your plots is that you didn't copy the image folder into your repo. See me after class tomorrow and I can show you how to fix and resubmit.  Make sure you add formatting to your resubmission too. 
+
+___
+
 For your write up you should present your plots and for 
 every plot provide a short summary of (1) how you made it, 
 (2) why you made it and what it tells you.
