@@ -57,9 +57,11 @@ Printed information from the script:
 3 plots that were generated from the script:
 
 ![Getting Started](output1.png)
+
 2018 had a an above average flow on the 13th and 14th of the month
 
 ![Getting Started](output2.png)
+
 2010 had an above average flow on the 22nd
 
 ![Getting Started](output3.png)
@@ -67,19 +69,24 @@ Printed information from the script:
 Code Rubric:
 1. Is the script easy to read and understand? (6/10)
  - Are variables and functions named descriptively when useful?
+   
    Line 42-43: Used same name for a variable inside the function, which I would suggest better not.
    Other names are fine.
  - Are the comments helpful?
+   
    Yes.
  - Can you run the script on your own easily?
+   
    Line 17: Filename should be 'streamflow_week7.txt'. (New data is not there yet, so I downloaded it myself.)
    Line 18: This line does not work for Windows system. (Changed it accordingly.)
    Line 40-51: Error of file not found. (Changed line 18 from 1 '..' to 2 '..'.)
  - Are the doc-strings useful?
+   
    There is no doc-string.
 
 2. Does the code follow PEP8 style consistently? (6/10)
  - If not are there specific instances where the script diverges from this style?
+   
    Line 5-6, 10: Imported but unused.
    Line 11, 46: Line too long.
    Line 25, 49, 56, 58, 67, 79: Improper indent.
@@ -91,10 +98,13 @@ Code Rubric:
 
 3. Is the code written succinctly and efficiently? (8/10)
  - Are there superfluous code sections?
+   
    There are some not used packages imported but not used.
    The print meassages are not really necessary, and so are some attribute shown lines.
    Line 36: Made a numpy array of data to find forecast submission values on Line 55-58. Extract data from data frame directly could also manage that, and that would be more terse.
  - Is the use of functions appropriate?
+   
    Functions are used correctly, but self defined function was not very helpful for forecasting.
  - Is the code written elegantly without decreasing readability?
+   
    The codes are ok, but with some redundant information. There are some errors, but basically easy to read. If the plots are saved instead of just printed out would be more helpful.
