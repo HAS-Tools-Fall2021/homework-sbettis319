@@ -1,5 +1,16 @@
 Sierra Bettis
 HW 8
+____________
+## Grade:
+### 1. Forecast Submision: 
+**2/3:** Good work on the analysis however your plots are not coming through and it is very hard to read because you have not done any markdown formatting. From now forward I will be taking off points for bot of these things. Please see me if you need help figuring these out and I'm happy to give you some pointers. Always make sure you  preview your markdown on GitHub before submitting this is the best way to make sure you see what I see. 
+
+### 2. Graded Script
+Refer to [the rubric](https://github.com/HAS-Tools-Fall2021/Course-Materials21/blob/main/Content/Starter_Codes/week7_code_review_rubric.md) for details on scoring: 
+- **Readability:3/3** Great doc strings and commenting throughout the code. 
+- **Style:3/3** No Pep 8 errors. You should consider a differnt name for your funciton though. Function is not very descriptive. 
+- **Code:1.5/3**  I really like all of your graphs. -0.5 becuase I had to adjust the path to the data to get it to run and -1  becuase your funciton is not working. Right now you don't actually have anything inside of it and there is notihng being returned from it. If you stop by my office hours I'm happy to show you how to fix this. 
+____________
 
 1. An explanation of how you generated your forecasts and why?
    I generated my forecasts using the datetime and found the mean over a range of dates for each week. I did this so that I could get more of the values that I was looking for in my time frame.

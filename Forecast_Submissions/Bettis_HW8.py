@@ -12,7 +12,7 @@ df = sns.load_dataset('iris')
 # %%
 # Set the file name and path to where you have stored the data
 filename = 'streamflow_week8.txt'
-filepath = os.path.join('..', '..', 'data', filename)
+filepath = os.path.join('..', 'data', filename)
 print(os.getcwd())
 print(filepath)
 
