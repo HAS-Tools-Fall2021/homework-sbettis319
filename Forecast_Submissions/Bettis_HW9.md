@@ -31,8 +31,8 @@ I could not get my metadata to work properly. The error was saying that the key 
 4. A plot that illustrates how you chose your forecast values.
 
 The first graph shows the flow values from 2010-2019 for the last week of October
-![picture 1](../../images/6df600703e529c672fab8f951811c2a4a656cb53ea7f8935ef6894a350639050.png)  
+![picture 3](../../images/f8b29dee0a8230a7e1e66909479fbc9c933b945aa9adb27e93b20e593b68a889.png)  
+ 
 
 The second graph shows the flow values from 2010-2019 for the first week of November. 
-![![picture 1](../../images/6df600703e529c672fab8f951811c2a4a656cb53ea7f8935ef6894a350639050.png)  
- 1](../../images/9eeda341cb2f02f5692a9bb5f291d89cf832a1c503003cacad1c8cc62f180629.png)  
+![picture 4](../../images/02ce0aa8fbfe48ac9d1c7be89e5924a751ae4db758466465634094f75c178466.png)  
