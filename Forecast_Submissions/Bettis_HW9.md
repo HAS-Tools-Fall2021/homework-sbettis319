@@ -2,6 +2,12 @@ Sierra Bettis
 HAS-Tools
 October 25, 2021
 
+____________
+## Grade:
+**2/3:** Good work but it looks like your graphhs are still not coming through.  Please make sure you see me and make sure you know how to fix this before your assignment next week. 
+____________
+
+
 1. A brief summary of the how you chose to generate your forecast this week.
 
 This week I wanted to get the data using an additional source of data that I got from a rain gauge close by. I could not get that to run, so I found the median flow value for the forecasting weeks and had to use that as my prediction.
