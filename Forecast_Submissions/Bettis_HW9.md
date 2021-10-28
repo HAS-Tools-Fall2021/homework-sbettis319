@@ -38,8 +38,8 @@ I could not get my metadata to work properly. The error was saying that the key 
 
 The first graph shows the flow values from 2010-2019 for the last week of October
 
-/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/Images/Graph1.png
+![](../Images/Graph1.png)
 
 The second graph shows the flow values from 2010-2019 for the first week of November.  
 
-/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/Images/Graph2.png
+![](../Images/Graph2.png)
