@@ -24,10 +24,10 @@ First I navigated to the wesbite and chose a variable or variables that are of i
 
 3. A plot of the dataset you added. This can be a timeseries, map, histogram or any other plot that you think is a good summary of what you added.
 
-![](../../histogram.png)
+![](../Images/histogram.png)
 
-1. Finally add your plot and a brief summary of what you did to our slide deck for this week. 
+4. Finally add your plot and a brief summary of what you did to our slide deck for this week. 
 
-![](../../graph.png)
+![](../Images/graph.png)
 
 I changed the graph provided by searching what color relative humidity should be when portrayed graphically, and changed the title to better fit the data. 
