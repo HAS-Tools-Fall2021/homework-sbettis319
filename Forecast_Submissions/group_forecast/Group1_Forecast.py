@@ -1,5 +1,5 @@
 # %%
-#Import Statements
+# Import Statements
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
@@ -16,8 +16,8 @@ from shapely.geometry import Point
 from netCDF4 import Dataset
 
 # %%
-#Import Stream Gage Data (Camp Verde)
-#CHANGE THE DATE AT THE END OF THE WEEK
+# Import Stream Gage Data (Camp Verde)
+# CHANGE THE DATE AT THE END OF THE WEEK
 url_1 = "https://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=09506000&referred_module=sw&period=&begin_date=1990-01-01&end_date=2021-11-6"
 data1 = pd.read_table(url_1, skiprows=30, names=['agency_cd', 'site_no',
                                                'datetime', 'flow', 'code'],
@@ -32,14 +32,14 @@ data1_i = data1.copy()
 data1_i = data1_i.set_index('datetime')
 
 # %%
-#Map??
+# Map?? --> annual precip
 
 # %%
-#Graph?? 
+# Graph?? 
 
 # %%
-#Forecast Function
-#CHANGE THE DATE TO 11/7/21 and 11/13/21 ON SUNDAY!!! SO IT'S UPDATED :) 
+# Forecast Function
+# CHANGE THE DATE TO 11/7/21 and 11/13/21 ON SUNDAY!!! SO IT'S UPDATED :) 
 def forecasts(month1, month2, day_start, day_end):
         '''
         This function determines the week 1 and week 2 forecast predictions based on the forecasted precip in Camp Verde
