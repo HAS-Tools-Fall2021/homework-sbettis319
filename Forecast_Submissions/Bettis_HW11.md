@@ -1,6 +1,11 @@
 Sierra Bettis
 HAS-Tools
 
+____
+### Grade 
+3/3 -- Good job. Try looking into the metadata a bit more though to answer the questions about spatial extent and resolution of the data. The answer you provided there didn't really address the question. 
+____
+
 1. A brief summary of the how you chose to generate your forecast this week.
 
 To get this weeks forecasts, I found the values how I usually do, by using the USGS data for the Verde River near Camp Verde and I use the novemeber mean values from 2015-2020. 
