@@ -39,6 +39,7 @@ data1_i = data1_i.set_index('datetime')
 
 # %%
 #Forecast Function
+#CHANGE THE DATE TO 11/7/21 and 11/13/21 ON SUNDAY!!! SO IT'S UPDATED :) 
 def forecasts(month1, month2, day_start, day_end):
         '''
         This function determines the week 1 and week 2 forecast predictions based on the forecasted precip in Camp Verde
