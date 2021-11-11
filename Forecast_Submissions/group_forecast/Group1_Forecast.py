@@ -40,21 +40,22 @@ data1_i = data1_i.set_index('datetime')
 # %%
 # Forecast Function
 # CHANGE THE DATE TO 11/7/21 and 11/13/21 ON SUNDAY!!! SO IT'S UPDATED :) 
-def forecasts(month1, month2, day_start, day_end):
+def forecasts(month1, month2, day_start, day_end, precip_chance):
         '''
         This function determines the week 1 and week 2 forecast predictions based on the forecasted precip in Camp Verde
 
         Parameters:
-        "month1" represents the month of October since this week falls over a change in the months (int)
+        "month1" represents the month of November (int)
         "month2" represents November (int)
-        "day_start" represents this past Sunday, the 31st. (int)
-        "day_end" represents Saturday, the 6th. (int)
+        "day_start" represents this past Sunday, the 7th. (int)
+        "day_end" represents Saturday, the 13th. (int)
+        "precip_chance" represents the total forecasted amount of precipitation in inches (int)
 
         Outputs:
         This function returns a print statement that provides the forecasted flows for week 1 and week 2. 
         '''
+        # If there is no forecasted precip:
         week_flow = data1_i['flow'][('2021-' + str(month1) + '-' + str(day_start)):('2021-' + str(month2) + '-' + str(day_end))]
-        #week_flow1 = data1[(data1['year'] == 2021) & (data1['month'] == month1) & (data1['day'] >= day_start) & (data1['day'] <= day_end)]
         forecast_mean = np.mean(week_flow)
 
         week_min = np.min(week_flow)
@@ -63,6 +64,19 @@ def forecasts(month1, month2, day_start, day_end):
         forecast_wk2 = week_max - difference
         prediction = print("The forecast for week 1 is:", forecast_mean, \
                 "and the forecast for week 2 is:", forecast_wk2)
-        return(prediction)
 
-forecasts(10, 11, 31, 6)
+        # If there is forecasted precip:
+        week_flow1 = data1[(data1['year'] == 2021) & (data1['month'] == 11) & (data1['day'] >= day_start) & (data1['day'] <= day_end)]
+        forecast_mean = np.mean(week_flow1['flow'])
+
+        precip_to_flow = precip_chance * 14 
+        forecast1 = forecast_mean + precip_to_flow 
+        forecast2 = forecast_mean - precip_to_flow 
+
+        prediction2 = print("The forecast for week 1 is:", forecast1, "cfs", \
+                "and the week 2 forecast is", forecast2, "cfs")
+
+        return(prediction, prediction2)
+
+
+forecasts(10, 11, 31, 6, 0)
