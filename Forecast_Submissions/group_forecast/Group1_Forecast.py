@@ -3,6 +3,7 @@
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
+from pandas.io.parsers import read_csv
 import xarray as xr
 import rioxarray
 import cartopy.crs as ccrs
@@ -35,7 +36,51 @@ data1_i = data1_i.set_index('datetime')
 # Map?? --> annual precip
 
 # %%
-# Graph?? 
+# Graph?? --> Time series of next two weeks' accumulated precipitation
+# Grab the data
+# Remember to change start_date to '20211111'
+# Move all the import lines to the top later
+import urllib.request as req
+import pygrib as pg
+import numpy as np
+import pandas as pd
+from datetime import datetime
+
+start_date = '20211109'
+base_url = "https://www.ncei.noaa.gov/data/global-forecast-system/access/grid-003-1.0-degree/forecast/202111/"+start_date+"/"
+
+precip = np.zeros(112)
+
+for i in range(51, 385, 3):
+        if i < 10:
+                filename = "gfs_3_" + start_date + "_0000_00" + str(i) + ".grb2"
+        elif i < 100:
+                filename = "gfs_3_" + start_date + "_0000_0" + str(i) + ".grb2"
+        else:
+                filename = "gfs_3_" + start_date + "_0000_" + str(i) + ".grb2"
+        req.urlretrieve(base_url+filename, 'C:\\Users\\certain\\Desktop\\temp.grb2')
+        dataset = pg.open('C:\\Users\\certain\\Desktop\\temp.grb2')
+        if str(dataset[596])[0:32] == '596:Total Precipitation:kg m**-2':
+                precip[int(i/3-1)] = dataset[596].values[34, 248]
+
+date_time = pd.date_range(start='2021-11-14 3:00', periods=112, freq='3H')
+precip_df = pd.DataFrame({'date_time': date_time, 'precip': precip})
+
+precip_df.to_csv('C:\\Users\\certain\\Desktop\\precip.csv')
+
+# %%
+# Get the graph
+import matplotlib.pyplot as plt
+precip_df = pd.read_table('C:\\Users\\certain\\Desktop\\precip.csv', skiprows=1,
+                          sep=',', names=['id', 'date_time', 'precip'],
+                          parse_dates=['date_time'])
+precip_df = precip_df.set_index(["date_time"])
+fig, ax = plt.subplots(figsize=(10, 5), facecolor='white')
+precip_df.plot(y='precip', ax=ax)
+ax.set(xlabel='Datetime',
+       ylabel='3-hour Accumulated Precipitation',
+       title='Forecast Precipitation from Nov 14, 2021 to Nov 27 (kg/m\u00b2)')
+fig.savefig("Group1_Graph.png")
 
 # %%
 # Forecast Function
