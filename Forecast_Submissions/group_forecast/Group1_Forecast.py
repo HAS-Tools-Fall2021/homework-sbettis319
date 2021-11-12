@@ -33,9 +33,28 @@ data1_i = data1.copy()
 data1_i = data1_i.set_index('datetime')
 
 # %%
-# Map?? --> annual precip
+# Map?? --> average annual precip from 1961-1991
+file = os.path.join('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/Average_Annual_Precipitation_-_AZ_(1961_-_1990)-shp/Average_Annual_Precipitation_-_AZ_(1961_-_1990).shp')
+precip = gpd.read_file(file)
 
+type(precip)
+precip.head
+precip.columns
+
+# Can see the geometry type of each row like this:
+precip.geom_type
+# can see the projection here
+precip.crs
+# And the total spatial extent like this:
+precip.total_bounds
+
+fig, ax = plt.subplots(figsize=(10, 10))
+precip.plot(categorical=False,
+                legend=True, markersize=45, cmap='OrRd', ax=ax)
+ax.set_title("Arizona annual precip from 1961-1991")
+plt.show()
 # %%
+<<<<<<< Updated upstream
 # Graph?? --> Time series of next two weeks' accumulated precipitation
 # Grab the data
 # Remember to change start_date to '20211111'
@@ -81,6 +100,11 @@ ax.set(xlabel='Datetime',
        ylabel='3-hour Accumulated Precipitation',
        title='Forecast Precipitation from Nov 14, 2021 to Nov 27 (kg/m\u00b2)')
 fig.savefig("Group1_Graph.png")
+=======
+# Graph?? --> time series of predicted precip rate
+
+
+>>>>>>> Stashed changes
 
 # %%
 # Forecast Function
