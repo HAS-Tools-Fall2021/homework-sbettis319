@@ -18,8 +18,7 @@ from netCDF4 import Dataset
 
 # %%
 # Import Stream Gage Data (Camp Verde)
-# CHANGE THE DATE AT THE END OF THE WEEK
-url_1 = "https://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=09506000&referred_module=sw&period=&begin_date=1990-01-01&end_date=2021-11-6"
+url_1 = "https://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=09506000&referred_module=sw&period=&begin_date=1990-01-01&end_date=2021-11-13"
 data1 = pd.read_table(url_1, skiprows=30, names=['agency_cd', 'site_no',
                                                'datetime', 'flow', 'code'],
                                                parse_dates =['datetime'])
@@ -33,7 +32,7 @@ data1_i = data1.copy()
 data1_i = data1_i.set_index('datetime')
 
 # %%
-# Map?? --> average annual precip from 1961-1991
+# Map
 file = os.path.join('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/Average_Annual_Precipitation_-_AZ_(1961_-_1990)-shp/Average_Annual_Precipitation_-_AZ_(1961_-_1990).shp')
 precip = gpd.read_file(file)
 
@@ -54,7 +53,7 @@ precip.plot(categorical=False,
 ax.set_title("Arizona annual precip from 1961-1991")
 plt.show()
 # %%
-# Graph?? --> Time series of next two weeks' accumulated precipitation
+# Graph: Time series of next two weeks' accumulated precipitation
 # Grab the data
 # Remember to change start_date to '20211111'
 # Move all the import lines to the top later
@@ -85,6 +84,7 @@ date_time = pd.date_range(start='2021-11-14 3:00', periods=112, freq='3H')
 precip_df = pd.DataFrame({'date_time': date_time, 'precip': precip})
 
 precip_df.to_csv('precip.csv')
+# please make sure to push this new csv :) 
 
 # %%
 # Get the graph
@@ -102,7 +102,9 @@ fig.savefig("Group1_Graph.png")
 
 # %%
 # Forecast Function
-# CHANGE THE DATE TO 11/7/21 and 11/13/21 ON SUNDAY!!! SO IT'S UPDATED :) 
+# hi xiang if you get to this, just keep the parameters and doc string included, even if some of the values aren't technically used, just so we have it :)
+# also i updated this to have the correct dates (nov 7 - nov 13) so if you try to run it today on saturday, it won't work 
+# also part 2 haha i updated the stream flow data in the second cell above to have saturday included so that won't work right now either (saturday) but it will work sunday :)
 def forecasts(month1, month2, day_start, day_end, precip_chance):
         '''
         This function determines the week 1 and week 2 forecast predictions based on the forecasted precip in Camp Verde
@@ -117,7 +119,7 @@ def forecasts(month1, month2, day_start, day_end, precip_chance):
         Outputs:
         This function returns a print statement that provides the forecasted flows for week 1 and week 2. 
         '''
-        # If there is no forecasted precip:
+        # If there is no forecasted precip, use this chunk (lines 119 to 127). If there IS forecasted precip, COMMENT THIS WHOLE SECTION OUT
         week_flow = data1_i['flow'][('2021-' + str(month1) + '-' + str(day_start)):('2021-' + str(month2) + '-' + str(day_end))]
         forecast_mean = np.mean(week_flow)
 
@@ -128,7 +130,7 @@ def forecasts(month1, month2, day_start, day_end, precip_chance):
         prediction = print("The forecast for week 1 is:", forecast_mean, \
                 "and the forecast for week 2 is:", forecast_wk2)
 
-        # If there is forecasted precip:
+        # If there is forecasted precip, use this chunk (lines 130 to 138). If there ISN'T forecasted precip, COMMENT THIS OUT :)) 
         week_flow1 = data1[(data1['year'] == 2021) & (data1['month'] == 11) & (data1['day'] >= day_start) & (data1['day'] <= day_end)]
         forecast_mean = np.mean(week_flow1['flow'])
 
@@ -136,10 +138,10 @@ def forecasts(month1, month2, day_start, day_end, precip_chance):
         forecast1 = forecast_mean + precip_to_flow 
         forecast2 = forecast_mean - precip_to_flow 
 
-        prediction2 = print("The forecast for week 1 is:", forecast1, "cfs", \
+        prediction = print("The forecast for week 1 is:", forecast1, "cfs", \
                 "and the week 2 forecast is", forecast2, "cfs")
 
-        return(prediction, prediction2)
+        return(prediction)
 
 
-forecasts(10, 11, 31, 6, 0)
+forecasts(11, 11, 7, 13, 0) #this zero should be the amount of precipitation that is forecasted in INCHES :) 

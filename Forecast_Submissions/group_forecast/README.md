@@ -14,13 +14,21 @@ For this week's forecast task, Sierra established the whole structure of our scr
 
 Our logic of combination is: ...
 
-One week forecast streamflow is () cfs;
+One week forecast streamflow is () cfs;\
 Two week forecast streamflow is () cfs.
 
 ---
 ### Forecast function
+In our function to determine our Week 1 and Week 2 forecasted flow values, there were two separate parts: if there was no forecasted precipitation and if there was forecasted precipitation.
+
+For the first part, if there was no forecasted precipitation, it would take the flow values from this past week (November 7 - November 13) and find the average of them. From there, the minimum value for that week and maximum value for that week would be found. The difference between these two would be taken. For the Week 1 forecast, it is the average from the past week and the Week 2 forecast is the average minus the difference between the max and min values.
+
+If there was precipitation forecasted, the steps are similar. The first thing is to get the average from this past week. One of the parameters is the amount of precipitation forecasted (in inches) and about one inch is 14 cfs so this value is multiplied by 14. From here, to find the Week 1 forecast, you take the forecast mean and add the forecasted flow. To find the Week 2 forecast, you take the forecast mean and subtract the forecasted flow.
+
 ---
 ### Map
+Start typing here Sierra :) Also Sierra, if you're having difficulty adding in the map image, just let us know :) -gigi
+
 ---
 ### Graph
 The graph we generated is a time series plot for next two weeks' accumulated precipitation.
@@ -29,6 +37,10 @@ We first grabbed the data from NOAA NCEI's data archive using urllib package, an
 
 Because we did not find a subset tool for the data, we have to open a global map for each file and grab the grid nearest to River Verde to get a single grid value. The grabbed single grid value was then written in a data frame and saved in a csv file to be applied in our forecast.
 
-The predicted precipitation data is 3-hourly average value, from the plot we can tell there might be some rainfall next week (remember to double check this part). 
+The predicted precipitation data is 3-hourly average value, from the plot we can tell there might be some rainfall next week (remember to double check this part).
 
-(Gigi please help add how we used this data to your great forecast function~)
+Assuming that there is predicted precipitation values for the next two weeks, this total number would be converted into inches (if not already in inches) and entered as a parameter into our forecast function. From here, since about one inch of water is equal to 14cfs, we multiply the inches value by 14. This is then added to the mean flow for this past week as our week 1 forecast and then subtracted from the mean flow for the week 2 forecast.
+
+*this file below will have to be changed to be updated :) 
+
+![](assets/README-69b0c05b.png)
