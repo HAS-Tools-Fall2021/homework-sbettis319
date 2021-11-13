@@ -69,8 +69,7 @@ base_url = "https://www.ncei.noaa.gov/data/global-forecast-system/access/grid-00
 
 precip = np.zeros(112)
 
-for i in range(51, 100, 3):
-# for i in range(51, 385, 3):
+for i in range(51, 385, 3):
         if i < 10:
                 filename = "gfs_3_" + start_date + "_0000_00" + str(i) + ".grb2"
         elif i < 100:
