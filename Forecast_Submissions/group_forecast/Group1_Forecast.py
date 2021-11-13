@@ -54,7 +54,6 @@ precip.plot(categorical=False,
 ax.set_title("Arizona annual precip from 1961-1991")
 plt.show()
 # %%
-<<<<<<< Updated upstream
 # Graph?? --> Time series of next two weeks' accumulated precipitation
 # Grab the data
 # Remember to change start_date to '20211111'
@@ -70,7 +69,8 @@ base_url = "https://www.ncei.noaa.gov/data/global-forecast-system/access/grid-00
 
 precip = np.zeros(112)
 
-for i in range(51, 385, 3):
+for i in range(51, 100, 3):
+# for i in range(51, 385, 3):
         if i < 10:
                 filename = "gfs_3_" + start_date + "_0000_00" + str(i) + ".grb2"
         elif i < 100:
@@ -85,12 +85,12 @@ for i in range(51, 385, 3):
 date_time = pd.date_range(start='2021-11-14 3:00', periods=112, freq='3H')
 precip_df = pd.DataFrame({'date_time': date_time, 'precip': precip})
 
-precip_df.to_csv('C:\\Users\\certain\\Desktop\\precip.csv')
+precip_df.to_csv('precip.csv')
 
 # %%
 # Get the graph
 import matplotlib.pyplot as plt
-precip_df = pd.read_table('C:\\Users\\certain\\Desktop\\precip.csv', skiprows=1,
+precip_df = pd.read_table('precip.csv', skiprows=1,
                           sep=',', names=['id', 'date_time', 'precip'],
                           parse_dates=['date_time'])
 precip_df = precip_df.set_index(["date_time"])
@@ -100,11 +100,6 @@ ax.set(xlabel='Datetime',
        ylabel='3-hour Accumulated Precipitation',
        title='Forecast Precipitation from Nov 14, 2021 to Nov 27 (kg/m\u00b2)')
 fig.savefig("Group1_Graph.png")
-=======
-# Graph?? --> time series of predicted precip rate
-
-
->>>>>>> Stashed changes
 
 # %%
 # Forecast Function
