@@ -211,9 +211,6 @@ fig.savefig("Group1_Graph.png")
 
 # %%
 # Forecast Function
-# hi xiang if you get to this, just keep the parameters and doc string included, even if some of the values aren't technically used, just so we have it :)
-# also i updated this to have the correct dates (nov 7 - nov 13) so if you try to run it today on saturday, it won't work 
-# also part 2 haha i updated the stream flow data in the second cell above to have saturday included so that won't work right now either (saturday) but it will work sunday :)
 def forecasts(month1, month2, day_start, day_end, precip_chance):
         '''
         This function determines the week 1 and week 2 forecast predictions based on the forecasted precip in Camp Verde
@@ -228,18 +225,18 @@ def forecasts(month1, month2, day_start, day_end, precip_chance):
         Outputs:
         This function returns a print statement that provides the forecasted flows for week 1 and week 2. 
         '''
-        # If there is no forecasted precip, use this chunk (lines 119 to 127). If there IS forecasted precip, COMMENT THIS WHOLE SECTION OUT
-        week_flow = data1_i['flow'][('2021-' + str(month1) + '-' + str(day_start)):('2021-' + str(month2) + '-' + str(day_end))]
-        forecast_mean = np.mean(week_flow)
+        # If there is no forecasted precip, use this chunk (lines 119 to 127):
+        #week_flow = data1_i['flow'][('2021-' + str(month1) + '-' + str(day_start)):('2021-' + str(month2) + '-' + str(day_end))]
+        #forecast_mean = np.mean(week_flow)
 
-        week_min = np.min(week_flow)
-        week_max = np.max(week_flow)
-        difference = week_max - week_min
-        forecast_wk2 = week_max - difference
-        prediction = print("The forecast for week 1 is:", forecast_mean, \
-                "and the forecast for week 2 is:", forecast_wk2)
+        #week_min = np.min(week_flow)
+        #week_max = np.max(week_flow)
+        #difference = week_max - week_min
+        #forecast_wk2 = week_max - difference
+        #prediction = print("The forecast for week 1 is:", forecast_mean, \
+        #        "and the forecast for week 2 is:", forecast_wk2)
 
-        # If there is forecasted precip, use this chunk (lines 130 to 138). If there ISN'T forecasted precip, COMMENT THIS OUT :)) 
+        # If there is forecasted precip, use this chunk (lines 130 to 138):
         week_flow1 = data1[(data1['year'] == 2021) & (data1['month'] == 11) & (data1['day'] >= day_start) & (data1['day'] <= day_end)]
         forecast_mean = np.mean(week_flow1['flow'])
 
@@ -253,6 +250,6 @@ def forecasts(month1, month2, day_start, day_end, precip_chance):
         return(prediction)
 
 precip_fore = np.sum(precip_df['precip']) / 25.4
-forecasts(11, 11, 7, 13, precip_fore)  # this precip_fore is the amount of precipitation that is forecasted in INCHES :) 
+forecasts(11, 11, 7, 13, precip_fore)  # precip_fore is the amount of precipitation that is forecasted in inches
 
 # %%
