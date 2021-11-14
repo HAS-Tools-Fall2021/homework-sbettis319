@@ -143,5 +143,7 @@ def forecasts(month1, month2, day_start, day_end, precip_chance):
 
         return(prediction)
 
+precip_fore = np.sum(precip_df['precip']) / 25.4
+forecasts(11, 11, 7, 13, precip_fore)  # this precip_fore is the amount of precipitation that is forecasted in INCHES :) 
 
-forecasts(11, 11, 7, 13, 0) #this zero should be the amount of precipitation that is forecasted in INCHES :) 
+# %%
