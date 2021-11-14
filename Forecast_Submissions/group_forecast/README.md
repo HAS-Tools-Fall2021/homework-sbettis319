@@ -27,12 +27,16 @@ If there was precipitation forecasted, the steps are similar. The first thing is
 
 ---
 ### Map
-The first map created was made by finding annual precipitation rates in AZ. The data was used from ASU geodata. Then I wanted to add data points showing the location of the stream gauge (Verde River near Camp Verde) and the University of Arizona. 
+The first map created was made by finding annual precipitation rates in AZ. 
+The data was used from ASU geodata and I downloaded the shape file for the data. Then I wanted to add data points showing the location of the stream gauge (Verde River near Camp Verde). 
+In order to get the projections correct, I made the shapefile and points to both project onto NAD83 (epsg=4269), which also created the correct latitude and longitude for the data. 
+Then I created a legend for the stream gauge location, adding in the mean stream flow for last week provided by Gigi. Finally, I added a title and x and y axis labels. 
 
-The map was created using the NCEP Reanalysis data precipitation data ('prate') that was turned into a geodataframe and resampled to get annual precipiation data as well as USGS Watershed Boundary HUC4. A point was also added for the location of the stream gauge. A basemap of landscape was also added to visualize the annual precipiation and the watershed boundaries. 
+![](../../Images/final_map.png)
+
+Another map was attemped using the NCEP Reanalysis data precipitation data ('prate') that was turned into a geodataframe and resampled to get annual precipiation data as well as USGS Watershed Boundary HUC4. 
+A point was also added for the location of the stream gauge. A basemap of landscape was also added to visualize the annual precipiation and the watershed boundaries. 
 This did not end up working because the precip data had too many points to map. 
-
-![](assets/README-0fdeb2d0.png)
 
 ---
 ### Graph

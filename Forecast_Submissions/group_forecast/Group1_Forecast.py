@@ -34,7 +34,7 @@ data1_i = data1.copy()
 data1_i = data1_i.set_index('datetime')
 
 # %%
-# Map
+# Map!
 file = os.path.join('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/Average_Annual_Precipitation_-_AZ_(1961_-_1990)-shp/Average_Annual_Precipitation_-_AZ_(1961_-_1990).shp')
 fiona.listlayers(file)
 precip = gpd.read_file(file)
@@ -50,30 +50,37 @@ precip.crs
 # And the total spatial extent like this:
 precip.total_bounds
 
+precip_project = precip.to_crs(epsg=4269)
+fig, ax = plt.subplots(figsize=(10, 10))
+precip_project.plot(categorical=False,
+                legend=True, markersize=45, cmap='OrRd', ax=ax)
+ax.set(title = "Arizona annual precip from 1961-1991",
+                xlabel = 'latitude', ylabel = 'longitude')
+plt.show()
 # Adding a point for the location of the stream gauge
-# University of Arizona:  32.22877495, -110.97688412
 # Stream gauge:  34.44833333, -111.7891667
-point_list = np.array([[-110.97688412, 32.22877495],
-                       [-111.7891667, 34.44833333]])
+point_list = np.array([[-111.7891667, 34.44833333]])
 point_geom = [Point(xy) for xy in point_list]
 point_geom
 
 # Map a dataframe of these points
 point_df = gpd.GeoDataFrame(point_geom, columns=['geometry'],
-                            crs=precip.crs)
+                            crs=precip_project.crs)
 
-precip_project = precip.to_crs(epsg=3857)
-point_project = point_df.to_crs(epsg=3857)
+point_project = point_df.to_crs(epsg=4269)
 
 fig, ax = plt.subplots(figsize=(10, 10))
 precip_project.plot(categorical=False,
                 legend=True, markersize=45, cmap='OrRd', ax=ax)
-point_project.plot(ax=ax, color='black', marker='o')
-ax.set_title("Arizona annual precip from 1961-1991")
+point_project.plot(ax=ax, color='black', marker='x', 
+        label = 'Stream Gauge - mean flow for last week: 143.9 cfs')
+ax.set(title = "Arizona annual precip from 1961-1991 and Stream Gauge",
+                xlabel = 'latitude', ylabel = 'longitude')
+ax.legend()
 plt.show()
 
 # %%
-# Other map
+# Other map that does not work
 # Watershed Boundary
 # Example reading in a geodataframe
 file = os.path.join('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/Shape')
