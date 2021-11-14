@@ -36,6 +36,7 @@ data1_i = data1_i.set_index('datetime')
 # %%
 # Map
 file = os.path.join('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/Average_Annual_Precipitation_-_AZ_(1961_-_1990)-shp/Average_Annual_Precipitation_-_AZ_(1961_-_1990).shp')
+fiona.listlayers(file)
 precip = gpd.read_file(file)
 
 type(precip)
@@ -49,14 +50,38 @@ precip.crs
 # And the total spatial extent like this:
 precip.total_bounds
 
+# Adding a point for the location of the stream gauge
+# University of Arizona:  32.22877495, -110.97688412
+# Stream gauge:  34.44833333, -111.7891667
+point_list = np.array([[-110.97688412, 32.22877495],
+                       [-111.7891667, 34.44833333]])
+point_geom = [Point(xy) for xy in point_list]
+point_geom
+
+# Map a dataframe of these points
+point_df = gpd.GeoDataFrame(point_geom, columns=['geometry'],
+                            crs=precip.crs)
+
+precip_project = precip.to_crs(epsg=3857)
+point_project = point_df.to_crs(epsg=3857)
+
 fig, ax = plt.subplots(figsize=(10, 10))
-precip.plot(categorical=False,
+precip_project.plot(categorical=False,
                 legend=True, markersize=45, cmap='OrRd', ax=ax)
+point_project.plot(ax=ax, color='black', marker='o')
 ax.set_title("Arizona annual precip from 1961-1991")
 plt.show()
 
-# %% 
+# %%
 # Other map
+# Watershed Boundary
+# Example reading in a geodataframe
+file = os.path.join('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/Shape')
+fiona.listlayers(file)
+HU4 = gpd.read_file(file, layer="WBDHU4")
+
+HU4.crs
+# %%
 # NCEP Reanalysis data --> precip
 data = ('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/X107.2.20.129.315.18.5.30.nc')
 dataset = xr.open_dataset(data)
@@ -102,7 +127,7 @@ precip_val = one_point.values
 one_point_df = one_point.to_dataframe()
 
 # Dataframe to geodataframe
-gdf_precip = gpd.GeoDataFrame(one_point_df.resample('Y'))
+gdf_precip = gpd.GeoDataFrame(one_point_df.resample('Y').mean)
 fig, ax = plt.subplots(figsize=(10, 10))
 gdf_precip.plot(ax=ax)
 ax.set_title("Precip")
@@ -111,13 +136,6 @@ plt.show()
 ## I need to get the geometry somehow
 precip_df = gpd.GeoDataFrame(point_geom, columns=['geometry'],
                             crs=HU4.crs)
-
-# %%
-# Watershed Boundary
-# Example reading in a geodataframe
-file = os.path.join('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/Shape')
-fiona.listlayers(file)
-HU4 = gpd.read_file(file, layer="WBDHU4")
 
 # %%
 # Adding a point for the location of the stream gauge
