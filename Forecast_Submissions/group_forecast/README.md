@@ -14,8 +14,8 @@ For this week's forecast task, Sierra established the whole structure of our scr
 
 Our logic of combination is: ...
 
-One week forecast streamflow is () cfs;\
-Two week forecast streamflow is () cfs.
+One week forecast streamflow is 144.6 cfs.\
+Two week forecast streamflow is 143.1 cfs.
 
 ---
 ### Forecast function
@@ -27,7 +27,8 @@ If there was precipitation forecasted, the steps are similar. The first thing is
 
 ---
 ### Map
-The map was created using the NCEP Reanalysis data precipitation data ('prate') that was turned into a geodataframe and resampled to get annual precipiation data as well as USGS Watershed Boundary HUC4. A point was also added for the location of the stream gauge (Verde River near Camp Verde). A basemap of landscape was also added to visualize the annual precipiation and the watershed boundaries. 
+The map was created using the NCEP Reanalysis data precipitation data ('prate') that was turned into a geodataframe and resampled to get annual precipiation data as well as USGS Watershed Boundary HUC4. A point was also added for the location of the stream gauge (Verde River near Camp Verde). A basemap of landscape was also added to visualize the annual precipiation and the watershed boundaries.
+
 ---
 ### Graph
 The graph we generated is a time series plot for next two weeks' accumulated precipitation.
@@ -40,6 +41,5 @@ The predicted precipitation data is 3-hourly average value, from the plot we can
 
 Assuming that there is predicted precipitation values for the next two weeks, this total number would be converted into inches (if not already in inches) and entered as a parameter into our forecast function. From here, since about one inch of water is equal to 14cfs, we multiply the inches value by 14. This is then added to the mean flow for this past week as our week 1 forecast and then subtracted from the mean flow for the week 2 forecast.
 
-*this file below will have to be changed to be updated :) 
 
 ![](assets/README-69b0c05b.png)
