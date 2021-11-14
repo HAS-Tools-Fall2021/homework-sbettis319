@@ -27,8 +27,7 @@ If there was precipitation forecasted, the steps are similar. The first thing is
 
 ---
 ### Map
-Start typing here Sierra :) Also Sierra, if you're having difficulty adding in the map image, just let us know :) -gigi
-
+The map was created using the NCEP Reanalysis data precipitation data ('prate') that was turned into a geodataframe and resampled to get annual precipiation data as well as USGS Watershed Boundary HUC4. A point was also added for the location of the stream gauge (Verde River near Camp Verde). A basemap of landscape was also added to visualize the annual precipiation and the watershed boundaries. 
 ---
 ### Graph
 The graph we generated is a time series plot for next two weeks' accumulated precipitation.

@@ -4,10 +4,12 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 from pandas.io.parsers import read_csv
+from shapely import geometry
 import xarray as xr
-import rioxarray
-import cartopy.crs as ccrs
-import cartopy.feature as cfeature
+import contextily as ctx
+#import rioxarray
+#import cartopy.crs as ccrs
+#import cartopy.feature as cfeature
 import seaborn as sns
 import geopandas as gpd
 import fiona
@@ -52,6 +54,113 @@ precip.plot(categorical=False,
                 legend=True, markersize=45, cmap='OrRd', ax=ax)
 ax.set_title("Arizona annual precip from 1961-1991")
 plt.show()
+
+# %% 
+# Other map
+# NCEP Reanalysis data --> precip
+data = ('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/X107.2.20.129.315.18.5.30.nc')
+dataset = xr.open_dataset(data)
+dataset
+# We can inspect the metadata of the file like this:
+metadata = dataset.attrs
+metadata
+# And we can grab out any part of it like this:
+metadata['dataset_title']
+
+# We can also look at other  attributes like this
+dataset.values
+dataset.dims
+dataset.coords
+
+# Focusing on just the precip values
+precip = dataset['prate']
+precip
+
+# Now to grab out data first lets look at spatail coordinates
+dataset['prate']['lat'].values.shape
+# The first 4 lat values
+dataset['prate']['lat'].values
+dataset['prate']['lon'].values
+
+# Now looking at the time
+dataset["prate"]["time"].values
+dataset["prate"]["time"].values.shape
+
+
+# Now lets take a slice: Grabbing data for just one point
+lat = dataset["prate"]["lat"].values[0]
+lon = dataset["prate"]["lon"].values[0]
+print("Long, Lat values:", lon, lat)
+one_point = dataset["prate"].sel(lat=lat,lon=lon)
+one_point.shape
+
+# Use x-array to plot timeseries
+one_point.plot.line()
+precip_val = one_point.values
+
+# Convert to dataframe
+one_point_df = one_point.to_dataframe()
+
+# Dataframe to geodataframe
+gdf_precip = gpd.GeoDataFrame(one_point_df.resample('Y'))
+fig, ax = plt.subplots(figsize=(10, 10))
+gdf_precip.plot(ax=ax)
+ax.set_title("Precip")
+plt.show()
+
+## I need to get the geometry somehow
+precip_df = gpd.GeoDataFrame(point_geom, columns=['geometry'],
+                            crs=HU4.crs)
+
+# %%
+# Watershed Boundary
+# Example reading in a geodataframe
+file = os.path.join('/Users/sierra/Desktop/Desktop - Sierra’s MacBook Pro/Fall 2021/HASTools/homework-sbettis319/data/Shape')
+fiona.listlayers(file)
+HU4 = gpd.read_file(file, layer="WBDHU4")
+
+# %%
+# Adding a point for the location of the stream gauge
+# Stream gauge:  34.44833333, -111.7891667
+point_list = np.array([[-111.7891667, 34.44833333]])
+# Make these into spatial features
+point_geom = [Point(xy) for xy in point_list]
+
+# Map a dataframe of these points
+point_df = gpd.GeoDataFrame(point_geom, columns=['geometry'],
+                            crs=HU4.crs)
+# %%
+# Combining HU4 and points
+HU4_project = HU4.to_crs(HU4.crs)
+point_project = point_df.to_crs(HU4.crs)
+# Now plot again
+fig, ax = plt.subplots(figsize=(5, 5))
+HU4.plot(categorical=False,
+              legend=True, markersize=15, cmap='Set1',
+              ax=ax)
+point_project.plot(ax=ax, color='black', marker='o')
+HU4_project.boundary.plot(ax=ax, color=None,
+                           edgecolor='blue', linewidth=0.5)
+ax.set(title ='Watershed Boundaries and Stream Gauge', xlabel ='latitude',
+                ylabel ='longitude')
+
+# %%
+# Converting the previous map to lat and longitude by projecting
+# everything to the HU4 crs
+precip_project = HU4_project.to_crs(HU4.crs)
+fig, ax = plt.subplots(figsize=(10, 10))
+gdf_precip.plot(categorical=False,
+              legend=True, color='black', marker='x', ax=ax)
+point_project.plot(ax=ax, color='black', marker='o',
+                    label ="Verde River at Camp Verde")
+HU4.boundary.plot(ax=ax, color=None,
+                edgecolor='blue',linewidth=0.5,
+                label="AZ Watershed boundary")
+ctx.add_basemap(ax, crs=HU4.crs)
+ax.set(title ='Annual Precip, Watershed Boundaries, and Stream Gauge',
+                xlabel ='latitude', ylabel ='longitude')
+ax.legend()
+#fig.savefig("Sub-basin AZ")
 # %%
 # Graph: Time series of next two weeks' accumulated precipitation
 # Grab the data
