@@ -12,10 +12,10 @@ ____________
 ### Summary
 For this week's forecast task, Sierra established the whole structure of our scripts and handled the map; Gigi provided her function for forecasting; Xiang got the timeseries of predicted precipitation from GFS.
 
-Our logic of combination is: ...
+Our logic of combination is described in the forecast function part.
 
-One week forecast streamflow is 144.6 cfs.\
-Two week forecast streamflow is 143.1 cfs.
+One week forecast streamflow is 170 cfs.
+Two week forecast streamflow is 118 cfs.
 
 ---
 ### Forecast function
@@ -51,4 +51,4 @@ The predicted precipitation data is 3-hourly average value, from the plot we can
 Assuming that there is predicted precipitation values for the next two weeks, this total number would be converted into inches (if not already in inches) and entered as a parameter into our forecast function. From here, since about one inch of water is equal to 14cfs, we multiply the inches value by 14. This is then added to the mean flow for this past week as our week 1 forecast and then subtracted from the mean flow for the week 2 forecast.
 
 
-![](assets/README-69b0c05b.png)
+![](Group1_Graph.png)
