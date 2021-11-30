@@ -2,6 +2,11 @@ Sierra Bettis
 HWRS 405
 Homework 14
 
+___
+## Grade
+3/3: Great job! I'm sorry that you were not able to get it running but I think your experience is pretty representative of what is out there. Without clear documentation and instructions on where to start it is very difficult for any new user to pick up a code. Also the fact that there were commits after the paper is published is an indication that they should have done a tagged release so that users can make sure they have exactly the version that matches the paper. 
+__
+
 1. The paper I picked is about data driven design of metal-organic frameworks (MOF) for wet flue gas CO2 capture. The authors aim to tackle limiting CO2 in the atmosphere by delevoping data of MOF's to see how they bond with CO2 and Nitrogen.
 https://www.nature.com/articles/s41586-019-1798-7#code-availability
 
