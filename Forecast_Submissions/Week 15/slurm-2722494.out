@@ -1,0 +1,2 @@
+Dec 06 09:55:12.412361 93908 slurmstepd   0x2ae36ef7b340: error: execve(): /var/spool/slurm/d/job2722494/slurm_script: Not a directory
+Detailed performance metrics for this job will be available at https://metrics.hpc.arizona.edu/#job_viewer?action=show&realm=SUPREMM&resource_id=73&local_job_id=2722494 by 8am on 2021/12/07.
